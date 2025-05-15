@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无障碍导航引擎 - 无障碍服务平台</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>无障碍服务平台</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="navigation.html" class="active">无障碍导航</a></li>
+                    <li><a href="recruitment.html">无障碍招聘</a></li>
+                    <li><a href="community.html">社区服务</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>无障碍导航引擎</h2>
+                <p>融合北斗/GPS/蓝牙信标多模定位，提供分米级精度的无障碍导航服务</p>
+            </div>
+        </section>
+
+        <section class="navigation-map">
+            <div class="container">
+                <div class="map-container">
+                    <div id="map" aria-label="导航地图">
+                        <!-- 地图将通过JavaScript加载 -->
+                    </div>
+                    <div class="map-controls">
+                        <h3>导航控制</h3>
+                        <form id="navigation-form">
+                            <div class="form-group">
+                                <label for="start-location">起点位置</label>
+                                <input type="text" id="start-location" placeholder="输入起点或使用当前位置" aria-describedby="location-help">
+                                <button type="button" id="use-current-location" class="btn-small">使用当前位置</button>
+                                <span id="location-help" class="help-text">请输入详细地址或点击使用当前位置</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="end-location">目的地</label>
+                                <input type="text" id="end-location" placeholder="输入目的地" required>
+                            </div>
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend>路径优先选项</legend>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="ramp-priority" checked>
+                                        <label for="ramp-priority">坡道优先</label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="elevator-access" checked>
+                                        <label for="elevator-access">电梯可达</label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="avoid-obstacles" checked>
+                                        <label for="avoid-obstacles">障碍物避让</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn">开始导航</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="navigation-features">
+            <div class="container">
+                <h3>核心功能</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>融合多模定位</h4>
+                        <p>北斗/GPS/蓝牙信标多模结合，提供分米级精度定位，室内外无缝衔接</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>智能路径规划</h4>
+                        <p>坡道优先、电梯可达、障碍物自动避让算法，确保行程安全顺畅</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>震动反馈</h4>
+                        <p>根据不同场景提供定制化震动反馈，协助视障用户感知环境变化</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>语音引导</h4>
+                        <p>清晰的语音提示，实时播报周围环境和导航指令</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>AR实景标注</h4>
+                        <p>通过摄像头实时标注障碍点和安全通道，增强现实导航体验（中期目标）</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 无障碍服务平台 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html> 

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区服务中台 - 无障碍服务平台</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>无障碍服务平台</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="navigation.html">无障碍导航</a></li>
+                    <li><a href="recruitment.html">无障碍招聘</a></li>
+                    <li><a href="community.html" class="active">社区服务</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>社区服务中台</h2>
+                <p>标准化API对接物业系统，提供无障碍设施报修、紧急呼叫、活动预约等功能</p>
+            </div>
+        </section>
+
+        <section class="service-cards">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card" id="repair-card">
+                        <div class="service-icon">
+                            <img src="images/repair-icon.svg" alt="报修图标" aria-hidden="true">
+                        </div>
+                        <h3>无障碍设施报修</h3>
+                        <p>报告社区中的无障碍设施问题，如坡道损坏、电梯故障、盲道阻塞等</p>
+                        <button class="btn btn-primary service-btn" data-service="repair">立即报修</button>
+                    </div>
+                    <div class="service-card" id="emergency-card">
+                        <div class="service-icon">
+                            <img src="images/emergency-icon.svg" alt="紧急呼叫图标" aria-hidden="true">
+                        </div>
+                        <h3>紧急呼叫</h3>
+                        <p>遇到紧急情况时一键求助，系统将通知社区工作人员和紧急联系人</p>
+                        <button class="btn btn-danger service-btn" data-service="emergency">紧急呼叫</button>
+                    </div>
+                    <div class="service-card" id="activity-card">
+                        <div class="service-icon">
+                            <img src="images/activity-icon.svg" alt="活动预约图标" aria-hidden="true">
+                        </div>
+                        <h3>活动预约</h3>
+                        <p>浏览并报名参加社区组织的各类活动，包括培训、讲座、康复和娱乐活动</p>
+                        <button class="btn btn-primary service-btn" data-service="activity">查看活动</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 设施报修表单 -->
+        <section class="service-form" id="repair-form" style="display: none;">
+            <div class="container">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h3>无障碍设施报修</h3>
+                        <button class="close-btn form-close-btn">&times;</button>
+                    </div>
+                    <form id="facility-repair-form">
+                        <div class="form-group">
+                            <label for="repair-type">设施类型</label>
+                            <select id="repair-type" required>
+                                <option value="">请选择设施类型</option>
+                                <option value="ramp">无障碍坡道</option>
+                                <option value="elevator">无障碍电梯</option>
+                                <option value="tactile">盲道系统</option>
+                                <option value="toilet">无障碍厕所</option>
+                                <option value="door">自动门</option>
+                                <option value="parking">无障碍停车位</option>
+                                <option value="signage">无障碍标识</option>
+                                <option value="other">其他设施</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="repair-location">问题位置</label>
+                            <input type="text" id="repair-location" placeholder="详细描述问题位置" required>
+                            <button type="button" class="btn-small" id="get-current-location">使用当前位置</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="repair-description">问题描述</label>
+                            <textarea id="repair-description" rows="4" placeholder="请详细描述设施问题" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="repair-photos">上传照片（可选）</label>
+                            <input type="file" id="repair-photos" accept="image/*" multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="repair-urgency">紧急程度</label>
+                            <select id="repair-urgency">
+                                <option value="normal">一般</option>
+                                <option value="urgent">紧急</option>
+                                <option value="very-urgent">非常紧急</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">提交报修</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 紧急呼叫面板 -->
+        <section class="service-form" id="emergency-form" style="display: none;">
+            <div class="container">
+                <div class="form-container emergency-container">
+                    <div class="form-header">
+                        <h3>紧急呼叫</h3>
+                        <button class="close-btn form-close-btn">&times;</button>
+                    </div>
+                    <div class="emergency-panel">
+                        <div class="emergency-warning">
+                            <p>紧急呼叫功能仅用于遇到紧急情况时使用</p>
+                        </div>
+                        <div class="emergency-options">
+                            <button class="btn btn-danger btn-large" id="call-community">呼叫社区服务人员</button>
+                            <button class="btn btn-danger btn-large" id="call-120">呼叫120急救</button>
+                            <button class="btn btn-danger btn-large" id="call-contacts">通知紧急联系人</button>
+                        </div>
+                        <div class="emergency-status" id="emergency-status" style="display: none;">
+                            <div class="status-indicator"></div>
+                            <p class="status-text">正在连接紧急服务...</p>
+                        </div>
+                        <div class="emergency-location">
+                            <p>当前位置：<span id="current-location">正在获取位置信息...</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 活动预约面板 -->
+        <section class="service-form" id="activity-form" style="display: none;">
+            <div class="container">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h3>社区活动预约</h3>
+                        <button class="close-btn form-close-btn">&times;</button>
+                    </div>
+                    <div class="activity-container">
+                        <div class="activity-filters">
+                            <div class="filter-group">
+                                <label for="activity-type">活动类型</label>
+                                <select id="activity-type">
+                                    <option value="">全部类型</option>
+                                    <option value="training">培训课程</option>
+                                    <option value="lecture">讲座沙龙</option>
+                                    <option value="rehab">康复锻炼</option>
+                                    <option value="entertainment">文体娱乐</option>
+                                    <option value="volunteer">志愿服务</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="activity-date">日期范围</label>
+                                <select id="activity-date">
+                                    <option value="all">全部时间</option>
+                                    <option value="today">今天</option>
+                                    <option value="tomorrow">明天</option>
+                                    <option value="week">本周</option>
+                                    <option value="month">本月</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-small" id="filter-activity">筛选</button>
+                        </div>
+                        <div class="activity-list" id="activity-list">
+                            <!-- 活动列表将通过JavaScript动态加载 -->
+                            <div class="activity-item">
+                                <div class="activity-time">
+                                    <div class="activity-date">6月25日</div>
+                                    <div class="activity-hour">14:00-16:00</div>
+                                </div>
+                                <div class="activity-info">
+                                    <h4 class="activity-title">智能手机无障碍功能应用培训</h4>
+                                    <div class="activity-meta">
+                                        <span class="activity-tag">培训课程</span>
+                                        <span class="activity-location">社区活动中心</span>
+                                        <span class="activity-capacity">剩余名额：8/20</span>
+                                    </div>
+                                    <p class="activity-desc">本次培训将介绍智能手机的常用无障碍功能，包括屏幕阅读器、放大功能、语音控制等，帮助视障和肢障人士更好地使用智能设备。</p>
+                                </div>
+                                <div class="activity-action">
+                                    <button class="btn">立即预约</button>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-time">
+                                    <div class="activity-date">6月28日</div>
+                                    <div class="activity-hour">9:30-11:30</div>
+                                </div>
+                                <div class="activity-info">
+                                    <h4 class="activity-title">社区适应性瑜伽</h4>
+                                    <div class="activity-meta">
+                                        <span class="activity-tag">康复锻炼</span>
+                                        <span class="activity-location">社区康复中心</span>
+                                        <span class="activity-capacity">剩余名额：5/12</span>
+                                    </div>
+                                    <p class="activity-desc">适应性瑜伽专为行动不便和肢体障碍者设计，通过改良的瑜伽体式，帮助参与者提升身体协调性、平衡能力和心肺功能。</p>
+                                </div>
+                                <div class="activity-action">
+                                    <button class="btn">立即预约</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination" id="activity-pagination">
+                            <button class="pagination-btn" disabled>上一页</button>
+                            <span class="pagination-info">第1页 / 共3页</span>
+                            <button class="pagination-btn">下一页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-stats">
+            <div class="container">
+                <h3>社区服务统计</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">1,253</div>
+                        <div class="stat-label">累计报修服务</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98.5%</div>
+                        <div class="stat-label">报修满意度</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">本月活动场次</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">756</div>
+                        <div class="stat-label">活动参与人次</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 无障碍服务平台 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/community.js"></script>
+</body>
+</html> 
